@@ -5,34 +5,48 @@ import './App.css';
 import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+import {Chart} from 'primereact/chart';
 
 class App extends Component {
     
-    constructor() {
-        super();
-        this.state = {count: 0};
-        this.increment = this.increment.bind(this);
-    }
-    
-    increment() {
-        this.setState({count: this.state.count + 1});
-    }
-    
-    render() {
+
+
+   render() {
+      const data = {
+            labels: ['A','B','C'],
+            datasets: [
+                {
+                    data: [300, 50, 100],
+                    backgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56"
+                    ],
+                    hoverBackgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56"
+                    ]
+                }]    
+            };
+
         return (
-          <div className="App">
-            <div className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <h2>Welcome to PrimeReact</h2>
+            <div>
+                <div className="content-section introduction">
+                    <div className="feature-intro">
+                        <h1>DoughnutChart</h1>
+                        <p>A doughnut chart is a variant of the pie chart, with a blank center allowing for additional information about the data as a whole to be included.</p>
+                    </div>
+                </div>
+
+                <div className="content-section implementation">
+                    <Chart type="doughnut" data={data} />
+                </div>
+
+
             </div>
-            <div className="App-intro">
-              <Button label="Click" icon="pi pi-check" onClick={this.increment} />
-              
-              <p>Number of Clicks: {this.state.count}</p>
-            </div>
-          </div>
-        );
-    }
+        )
+     }
 }
 
 export default App;
